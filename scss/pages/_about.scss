@@ -1,0 +1,331 @@
+.aboutpage {
+    main {
+        // ko dc de hidden ne
+        overflow: initial;
+    }
+    &.--disable-scroll {
+        height: 100vh;
+        overflow: hidden;
+    }
+    .progressbar {
+        position: fixed;
+        z-index: 300;
+        width: 0%;
+        height: 4px;
+        background-color: var(--blue-cl);
+
+        @include transition(var(--duration));
+    }
+    // POPUP VIDEO
+    .about__main {
+        background-color: var(--dark-blue-cl);
+        // overflow: hidden;
+        // -----------------------------------SECTION FINANCEFLOW-----------------------------------
+        .financeflow {
+            --pt: 192px;
+            --pb: 112px;
+            padding-top: var(--pt);
+            padding-bottom: var(--pb);
+            .textbox {
+                .desc {
+                    max-width: 606px;
+                }
+            }
+        }
+        // -----------------------------------REPONSIVE MOBILE-----------------------------------
+        @include xs {
+            .financeflow {
+                --pt: 121px;
+                --pb: 48px .textbox {text-align: left; margin: initial; .desc {max-width: 320px; margin: initial;}};
+            }
+        }
+        // -----------------------------------SECTION DRIVER-----------------------------------
+        .driver {
+            &__blur {
+                position: absolute;
+                top: 0;
+                right: 0;
+                z-index: -1;
+            }
+            &__wrap {
+                margin-top: 29px;
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                grid-template-columns: 1fr 1fr;
+                gap: var(--gap);
+                &-item {
+                    padding: 58px 32px;
+                    background-color: var(--medium-blue-cl);
+                    border-radius: var(--boder-radius);
+                    display: flex;
+                    img {
+                        margin-bottom: auto;
+                    }
+                    .textbox {
+                        margin-left: 24px;
+                        .heading {
+                            margin-bottom: 7px;
+                        }
+                    }
+                }
+            }
+        }
+        // -----------------------------------REPONSIVE DRIVER-----------------------------------
+        @include xs {
+            .driver {
+                padding-top: 0px;
+                padding-bottom: 40px;
+                &__wrap {
+                    margin-top: 16px;
+                    grid-template-columns: initial;
+                    grid-template-rows: auto;
+                    &-item {
+                        display: initial;
+                        .textbox {
+                            margin-left: initial;
+                            margin-top: 24px;
+                        }
+                    }
+                }
+            }
+        }
+        // -----------------------------------SECTION OURMISSION-----------------------------------
+        .ourmission {
+            overflow-x: hidden;
+            padding-bottom: 191px;
+            // display: flex;
+            // justify-content: space-between;
+            .container {
+                display: grid;
+                grid-template-columns: repeat(12, 1fr);
+                gap: var(--gap);
+                // align-items: start;
+            }
+            &__content {
+                // padding-left: var(--pading-container);
+                // padding-right: 107px;
+                // width: calc(607px + var(--pading-container) + 107px);
+                grid-column: 1/8;
+                padding-right: 76px;
+                .textbox {
+                    .heading {
+                        margin-bottom: 16px;
+                    }
+                    .desc {
+                        &:nth-child(even) {
+                            margin-bottom: 30px;
+                        }
+                    }
+                    &:first-child {
+                        margin-bottom: 78px;
+                    }
+                }
+            }
+            &__img {
+                grid-column: 8/13;
+                display: flex;
+                img {
+                    max-width: initial;
+                }
+            }
+        }
+        // -----------------------------------SECTION OURMISSION REPONSIVE-----------------------------------
+
+        @include sm {
+            .ourmission {
+                .container {
+                  display: block;
+                }
+                padding-bottom: 80px;
+                &__content {
+                    width: 100%;
+                    grid-column: initial;
+                    padding-right: initial;
+                }
+                &__img {
+                    grid-column: initial;
+                    margin-top: 64px;
+                    display: flex;
+                    justify-content: center;
+                    img{
+                          @include midimg;
+                    }
+                }
+            }
+        }
+        // -----------------------------------SECTION TIMELINE-----------------------------------
+        .timeline {
+            overflow: initial;
+            .container {
+                display: grid;
+                grid-template-columns: repeat(12, 1fr);
+
+                gap: var(--gap);
+                // align-items: start;
+            }
+            &__left {
+                grid-column: 1/5;
+                overflow: initial;
+                // height: 100%;
+                &.--sticky {
+                    position: sticky;
+                    top: calc(var(--height-header) + 5px);
+                    z-index: 10;
+                    align-self: start;
+                }
+            }
+            &__wrap {
+                grid-column: 6/13;
+                &-item {
+                    position: relative;
+                    // padding-left: 54px;
+                    // margin-bottom: 80px;
+
+                    .circle {
+                        width: 24px;
+                        height: 24px;
+                        // aspect-ratio: 24/24;
+                        top: 0;
+                        left: 0;
+                        border-radius: 50%;
+                        background-color: var(--white-cl);
+                        position: absolute;
+                    }
+                    .textbox {
+                        padding-left: 78px;
+                        padding-bottom: 40px;
+                        position: initial;
+                    }
+                    &::after {
+                        width: 100%;
+                        content: "";
+                        display: block;
+                        height: 1px;
+                        background-color: var(--white-cl);
+                    }
+                    &:not(:nth-child(4)) {
+                        margin-bottom: 80px;
+                    }
+                }
+            }
+        }
+        // -----------------------------------SECTION TIMELINE REPONSIVE MOBILE-----------------------------------
+        @include xs {
+            .timeline {
+                .container {
+                    display: flex;
+                    flex-direction: column;
+                    // grid-template-rows: auto;
+                    // gap:40px;
+                }
+                .textbox {
+                    margin-bottom: 40px;
+                    max-width: 330px;
+                }
+                &__left {
+                    &.--sticky {
+                        position: initial;
+                    }
+                }
+                &__wrap {
+                    &-item {
+                        .textbox {
+                            max-width: initial;
+                            margin-bottom: initial;
+                        }
+                    }
+                }
+            }
+        }
+        // -----------------------------------SECTION OURTEAM-----------------------------------
+        .ourteam {
+            padding-top: 120px;
+            &__wrap {
+                margin-top: 50px;
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 38px;
+                &-item {
+                    background-color: var(--medium-blue-cl);
+                    border-radius: var(--boder-radius);
+                    padding: 24px;
+                    .iframe {
+                        width: 100%;
+                        aspect-ratio: 327/400;
+                        margin-bottom: 32px;
+                        border-radius: 32px;
+                        overflow: hidden;
+                        position: relative;
+
+                        img {
+                            @include midimg();
+                            @include mid(false);
+                        }
+                    }
+                }
+            }
+        }
+        @include sm {
+            .ourteam {
+                &__wrap {
+                    display: grid;
+                    grid-template-columns: initial;
+                    grid-template-rows: auto;
+                    gap: var(--gap);
+                    &-item {
+                        .author__desc {
+                            display: flex;
+                            flex-direction: column;
+                            align-items: center;
+                        }
+                    }
+                }
+            }
+        }
+
+        // --------------------------SECTION INVESTORS-----------------------
+        .investors {
+            padding-bottom: 230px;
+            &__list {
+                // &-title {
+                //     text-align: center;
+                //     margin-bottom: 34px;
+                // }
+
+                display: flex;
+                img {
+                    margin-right: 70px;
+                }
+            }
+        }
+
+        // ---------------------MOBILE REPONSIVE SECTION COMPANY-----------------------
+        @include xs {
+            .investors {
+                padding: 80px 0;
+                &__list {
+                    margin-top: 48px;
+                    display: grid;
+                    grid-template-rows: 1fr 1fr 1fr;
+                    grid-template-columns: 1fr 1fr;
+                    gap: 16px 40px;
+                    padding: 0 25px;
+                    .img {
+                        display: flex;
+                        justify-content: center;
+                        img {
+                            margin: initial;
+                        }
+                        &:nth-child(5) {
+                            grid-column: 1 / 3;
+                            grid-row: 3/4;
+                            //    display: flex;
+                            //    justify-content: center;
+                            position: relative;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

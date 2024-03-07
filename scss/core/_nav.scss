@@ -1,0 +1,86 @@
+.nav {
+    display: none;
+}
+@include sm {
+    .nav {
+        height: 100%;
+        width: 100%;
+        background-color: var(--dark-blue-cl);
+        z-index: 98;
+        position: fixed;
+        flex-direction: column;
+        transition: var(--duration);
+        @include mid(true);
+        @include visible(0);
+        .btn{
+             position: relative;
+            z-index: 5;
+            margin-top: 40px
+
+        }
+        .schero__blur {
+            // position: absolute;
+            // top: 50%;
+            // transform: ;
+            // left: 0;
+            @include mid(false);
+            z-index: 3;
+            width: 100%;
+        }
+        .nav__mobile {
+            font-size: var(--fs-nav);
+            flex-direction: column;
+            text-align: center;
+            li {
+                margin-top: 40px;
+                a {
+                    line-height: var(--lh-nav);
+                    font-family: var(--font-body-medium);
+                    font-size: var(--fs-nav);
+                    color: var(--white-cl);
+                    text-transform: uppercase;
+                    transition: var(--duration);
+                    cursor: pointer;
+                    position: relative;
+                    z-index: 5;
+                    &::after {
+                        content: "";
+                        display: block;
+                        position: absolute;
+                        left: 0;
+                        bottom: -2px;
+                        background-color: var(--white-cl);
+                        width: 100%;
+                        height: 2px;
+                        @include transform(scaleX(0));
+                        @include transform-origin(right);
+                        @include transition(transform var(--duration));
+                    }
+                    &.--active,
+                    &:hover {
+                        &::after {
+                            @include transform(scaleX(1));
+                            @include transform-origin(left);
+                            @include transition(transform var(--duration));
+                        }
+                    }
+
+                    // &:hover {
+                    //     color: var(--yellow-cl);
+                    //     transition: var(--duration);
+                    // }
+                    // &.--active {
+                    //     color: var(--yellow-cl);
+                    //     @include transition(var(--time-transition));
+                    // }
+                }
+                // &:not(:nth-child(1)) {
+                //     margin-top: 40px;
+                // }
+            }
+        }
+        &.--show {
+            @include visible(1);
+        }
+    }
+}

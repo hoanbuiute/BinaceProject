@@ -1,0 +1,132 @@
+:root {
+	/* MaxWidth Of Page, Container-Fluid, Container, Gutter*/
+
+	--max-width-page: 2560px;
+	// --max-width-container-fluid: 1920px;
+	--width-container: 1198px;
+	--max-width-container: calc(var(--width-container) + calc(var(--gap) * 2)); // maxwidth container 1198px
+	--pading-container: calc((100vw - (var(--max-width-container) - (var(--gap) * 2))) / 2);
+	--gap: 28px; // Tuỳ vào thiết kế
+	--font-body: sr;
+	--font-body-bold: sb;
+	--font-body-medium: sm;
+	/* Colors Variable Demo*/
+	// --main-cl: #42ada5;
+	--blue-cl: #0328ee;
+	--white-cl: #ffffff;
+	--dark-blue-cl: #010725;
+	--medium-blue-cl: #00116a;
+	--gray-cl: rgba(255, 255, 255, 0.1);
+
+	// Fontsize - Lineheight -letterspacing
+
+	--fs-h1: 6.6rem;
+	--lh-h1: 8rem;
+	--ls-h1: -1px;
+
+	--fs-h2: 4.2rem;
+	--lh-h2: 5.5rem;
+	--ls-h2: -0.42px;
+
+	--fs-h3: 2.2rem;
+	--lh-h3: 3.1rem;
+
+	--fs-body-1: 1.8rem;
+	--lh-body-1: 3.2rem;
+
+	--fs-body-2: 1.6rem;
+	--lh-body-2: 2.6rem;
+	--boder-radius: 40px;
+	//Table
+	--fs-table-head: 1.6rem;
+	--lh-table-head: 1.8rem;
+	--ls-table-head: 1px;
+	--lh-table-body: 2.2rem;
+	//FOOTER
+	--height-footer-bottom: 90px;
+	--height-backtotop: 50px;
+	// HEADER
+	--fs-text-menu: 1.4rem;
+	--lh-text-menu: 1.6rem;
+	--ls-text-menu: 1.4px;
+	--height-header: 90px;
+	--padding-menu: 14px;
+	--pd-section: 120px;
+	//BUTTON
+	--height-button-main: 7rem;
+	--height-button-small: 5.6rem;
+	--fs-text-button: 1.6rem;
+	--lh-text-button: 1.6rem;
+	--ls-text-button: 1.6px;
+	--border-radius-btn: 80px;
+	//LABEL
+	--fs-text-label: 1.8rem;
+	--lh-text-label: 2.6rem;
+	--ls-text-label: 0.9px;
+	//QUOTE
+	--fs-quote: 2.2rem;
+	--lh-quote: 3.8rem;
+
+	//numer
+	--fs-number: 2.8rem;
+	--lh-number: 3rem;
+	--ls-number: 0.28px;
+	//TAB
+	--fs-tab: 1.4rem;
+	--lh-tab: 1.8rem;
+	--ls-tab: 0.7px;
+	--height-tab: 3.6rem;
+	--fs-tab-small: 1.2rem;
+	--lh-tab-small: 1.2rem;
+	--ls-tab-small: 0.6px;
+	--height-tab-small: 2.6rem;
+	// Timing Transition Variable Demo
+	--duration: 0.4s;
+	--cubic: cubic-bezier(0.59, 0.29, 0.15, 0.93);
+
+	// Responsive
+	@include md {
+		--width-container: 1140px;
+	}
+	@include sm {
+		--width-container: 960px; // hoặc max-width: 100% tuỳ yêu cầu
+	}
+	@include xs {
+		--max-width-container: 100%; // hoặc max-width: 100% tuỳ yêu cầu
+		--gap: 15px;
+		--pd-section: 80px;
+
+		// DEMO
+		// Fontsize - Lineheight Variable Demo
+		--fs-h1: 3.8rem;
+		--lh-h1: 4.6rem;
+		--ls-h1: -1px;
+
+		--fs-h2: 2.8rem;
+		--lh-h2: 3.6rem;
+
+		--fs-body-1: 1.6rem;
+		--lh-body-1: 2.6rem;
+
+		//BUTTON
+		--height-button: 7rem;
+		--fs-text-button: 1.6rem;
+		--lh-text-button: 1.6rem;
+		--ls-text-button: 1.6px;
+		//LABEL
+		--fs-text-label: 1.4rem;
+		--lh-text-label: 1.8rem;
+		--ls-text-label: 0.7px;
+		//TAB
+		--fs-text-tab: 1.4rem;
+		--lh-text-tab: 1.8rem;
+		--ls-text-tab: 0.7px;
+		// nav
+		--fs-nav: 2.6rem;
+		--lh-nav: 2.6rem;
+		--ls-nav: 1.4px;
+	}
+	@include xxs {
+		--container-max-width: 100%;
+	}
+}

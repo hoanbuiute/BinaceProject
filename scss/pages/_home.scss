@@ -1,0 +1,876 @@
+.homepage {
+    &.--disable-scroll {
+        height: 100vh;
+        overflow: hidden;
+    }
+    .progressbar {
+        position: fixed;
+        z-index: 300;
+        width: 0%;
+        height: 4px;
+        background-color: var(--blue-cl);
+        @include transition(var(--duration));
+        &.--hide {
+            visibility: hidden;
+            @include transition(var(--duration));
+        }
+    }
+    // POPUP VIDEO
+    .popupvideo {
+        position: fixed;
+        z-index: 120;
+        width: 100vw;
+        height: 100vh;
+        background-color: rgba(0, 0, 0, 0.9);
+        opacity: 0;
+        @include mid(true);
+        visibility: hidden;
+        @include transition(var(--duration));
+        &__inner {
+            @include mid(true);
+            z-index: 121;
+            width: 80%;
+            height: 80%;
+            max-width: 1200px;
+            &-iframe {
+                width: 100%;
+                // height: 0;
+                // padding-bottom: 56.25%;
+                aspect-ratio: 16 / 9;
+                @include mid(true);
+                position: relative;
+                border: 5px solid var(--dark-blue-cl);
+                @include transition(var(--duration));
+                cursor: pointer;
+                iframe {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                }
+                .btn__close {
+                    background-color: var(--blue-cl);
+                    width: 30px;
+                    height: 30px;
+                    border-radius: 100%;
+                    position: absolute;
+                    top: -15px;
+                    right: -15px;
+                    cursor: pointer;
+                    img {
+                        @include mid(false);
+                    }
+                }
+            }
+        }
+        &.--active {
+            opacity: 1;
+            visibility: visible;
+            @include transition(var(--duration));
+        }
+    }
+    @include xs {
+        .popupvideo {
+            &__inner {
+                width: calc(100% - 20px);
+                height: calc(100% - 20px);
+            }
+        }
+    }
+    .home__main {
+        background-color: var(--dark-blue-cl);
+        overflow: hidden;
+        // --------------------------SECTION HERO-----------------------
+        .schero {
+            z-index: 1;
+            padding-top: 0px;
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            min-height: 630px;
+            max-height: 1366px;
+            .schero__blur {
+                position: absolute;
+
+                left: -50%;
+                z-index: -1;
+                  @include transform(translateY(-50%));
+            }
+            .container {
+                height: 100%;
+                z-index: 3;
+            }
+            .textbox {
+                max-width: initial;
+                position: absolute;
+                top: 50%;
+                  @include transform(translateY(-50%));
+                // padding-top: 121px;
+                .heading {
+                    max-width: 738px;
+                }
+                .desc {
+                    max-width: 568px;
+                }
+            }
+            &__planet {
+                position: absolute;
+                top: 50%;
+                right: -90px;
+                z-index: -1;
+                transform: translateY(-50%);
+                .blur {
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    max-width: initial;
+                }
+                .planet {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+            }
+            // ---------------------MOBILE REPONSIVE SECTION HERO TABLET-----------------------
+            @include xs {
+                height: 100%;
+                position: relative;
+                // margin-bottom: 120px;
+                .textbox {
+                    position: initial;
+                    padding-top: 0px;
+                    margin-top: 135px;
+                    transform: initial;
+                    .heading {
+                        max-width: 341px;
+                    }
+                    .desc {
+                        max-width: 320px;
+                    }
+                }
+                .wrapbtn {
+                    flex-direction: column;
+                    .btn {
+                        @include mid(true);
+                        width: 100%;
+                        &:not(:nth-child(1)) {
+                            margin-top: 16px;
+                        }
+                    }
+                }
+                &__planet {
+                    margin-top: 32px;
+                    position: relative;
+                    top: initial;
+                    right: initial;
+                    transform: initial;
+                    -webkit-transform: initial;
+                    .blur {
+                        // position: absolute;
+                        opacity: 0.5;
+                    }
+                    .planet {
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                    }
+                }
+            }
+        }
+        // --------------------------SECTION COMPANY-----------------------
+        .sccompany {
+            padding-bottom: 0px;
+
+            &__list {
+                &-title {
+                    text-align: center;
+                    margin-bottom: 34px;
+                }
+                &-item {
+                    display: flex;
+                    img {
+                        margin-right: 70px;
+                    }
+                }
+            }
+
+            // ---------------------MOBILE REPONSIVE SECTION COMPANY-----------------------
+            @include xs {
+                padding: 32px 0 57px 0;
+                &__list {
+                    &-title {
+                        text-align: center;
+                        margin-bottom: 34px;
+                    }
+                    &-item {
+                        display: grid;
+                        grid-template-rows: 1fr 1fr 1fr;
+                        grid-template-columns: 1fr 1fr;
+                        gap: 16px 40px;
+                        padding: 0 25px;
+                        .img {
+                            // margin: initial;
+                            // display: flex;
+                            // justify-content: center;
+                            &:nth-child(5) {
+                                grid-column: 1 / 3;
+                                grid-row: 3/4;
+                                //    display: flex;
+                                //    justify-content: center;
+                                position: relative;
+                                img {
+                                    position: absolute;
+                                    left: 50%;
+                                    transform: translateX(-50%);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        // --------------------------SECTION PRODUCT-----------------------
+        .scproduct {
+            // position: relative;
+            .container {
+                z-index: 1;
+            }
+            &__blur {
+                position: absolute;
+                top: 0;
+                right: -15px;
+                z-index: -1;
+            }
+            &__wrap {
+                display: grid;
+                margin-top: 80px;
+                grid-template-columns: 0.67148fr 1fr 0.67148fr;
+                gap: 43px 39px;
+                .item {
+                    // display: flex;
+                    background-color: var(--medium-blue-cl);
+                    // aspect-ratio: 325/295;
+                    padding: 48px 24px;
+                    overflow: hidden;
+                    border-radius: var(--boder-radius);
+
+                    .card__content {
+                        padding: initial;
+                    }
+                    .textbox {
+                        margin-top: 20px;
+                        padding: initial;
+                    }
+                    &:nth-child(1) {
+                        grid-area: 1/1/2/2;
+                    }
+                    &:nth-child(2) {
+                        grid-area: 2/1/3/2;
+                    }
+                    &:nth-child(5) {
+                        grid-area: 1/3/2/4;
+                    }
+                    &:nth-child(3) {
+                        grid-area: 1/2/3/3;
+                        background-color: var(--blue-cl);
+                        // width: 100%;
+                        // height: 100%;
+                        padding-bottom: 0;
+                        overflow: hidden;
+                        position: relative;
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: space-between;
+                        .img {
+                            @include mid(true);
+                        }
+                        .textbox {
+                            // padding: 44px 33px;
+                            margin-top: initial;
+                        }
+                    }
+                }
+            }
+            .btn {
+                margin: 48px auto 0 auto;
+            }
+            // --------------------------SECTION PRODUCT TABLET-----------------------
+            @include md {
+                &__wrap {
+                    display: grid;
+                    grid-template-columns: 1fr 1fr;
+                    grid-template-rows: 1fr 1fr 1fr;
+
+                    .item {
+                        &:nth-child(1) {
+                            grid-area: 1/1/2/2;
+                        }
+                        &:nth-child(2) {
+                            grid-area: 1/2/2/3;
+                        }
+                        &:nth-child(3) {
+                            grid-area: 2/1/4/2;
+                        }
+                        &:nth-child(4) {
+                            grid-area: 2/2/3/3;
+                        }
+                        &:nth-child(5) {
+                            grid-area: 3/2/4/3;
+                        }
+                    }
+                }
+            }
+            // ---------------------MOBILE REPONSIVE SECTION PRODUCT-----------------------
+            @include xs {
+                padding-top: 0;
+                .textbox {
+                    text-align: left;
+                    .heading {
+                        max-width: 273px;
+                        // text-align: left;
+                    }
+                    .desc {
+                        max-width: 314px;
+                        margin: initial;
+                    }
+                }
+                &__blur {
+                    right: -60%;
+                    img {
+                        max-width: initial;
+                        opacity: 0.8;
+                    }
+                }
+                &__wrap {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    gap: var(--gap);
+                    margin: 0 auto;
+                    margin-top: var(--gap);
+                }
+            }
+        }
+
+        // -----------------SECTION EARNDAILY-----------------------
+        .scearndaily {
+            position: relative;
+            --pb: 219px;
+            padding-bottom: var(--pb);
+            z-index: 1;
+
+            &__blur {
+                position: absolute;
+                top: 0;
+                right: 0;
+                z-index: -1;
+            }
+            &__item {
+                display: grid;
+                grid-template-columns: repeat(12, 1fr);
+                align-items: center;
+                gap: var(--gap);
+                grid-auto-flow: dense;
+                &:nth-child(1) {
+                    margin-bottom: 100px;
+                    .scearndaily__item-img {
+                        grid-column: 1/7;
+                    }
+                    .textbox {
+                        grid-column: 8/13;
+                    }
+                }
+                &:nth-child(2) {
+                    .scearndaily__item-img {
+                        grid-column: 6/13;
+                        img {
+                            width: 972px;
+                            max-width: initial;
+                        }
+                    }
+                    .textbox {
+                        grid-column: 1/6;
+                    }
+                }
+            }
+            // ---------------------TABLET REPONSIVE SECTION EARNDAILY-----------------------
+            @include md {
+                --pb: 80px;
+                &__item {
+                    display: flex;
+                    flex-direction: column;
+                    .textbox {
+                        padding: 40px 0;
+                        max-width: 400px;
+                        .heading {
+                            margin-bottom: 16px;
+                        }
+                        .list__icons {
+                            margin-top: 16px;
+                        }
+                    }
+                    &:nth-child(1) {
+                        margin: initial;
+                    }
+                    &:nth-child(2) {
+                        flex-direction: column-reverse;
+                        .scearndaily__item-img {
+                            img {
+                                width: 100%;
+                            }
+                        }
+                    }
+                }
+            }
+            // ---------------------MOBILE REPONSIVE SECTION EARNDAILY-----------------------
+            @include xs {
+                &__item {
+                    .textbox {
+                        padding: 40px 0;
+                        max-width: 330px;
+                        .heading {
+                            margin-bottom: 16px;
+                        }
+                        .list__icons {
+                            margin-top: 16px;
+                        }
+                    }
+                }
+            }
+        }
+
+        // --------------------------SECTION EXPHORE-----------------------
+        .scexplore {
+            position: relative;
+            padding: 110px 0;
+            // margin: 219px 0 80px 0;
+            background-color: var(--blue-cl);
+            .container {
+                display: grid;
+                grid-template-columns: repeat(12, 1fr);
+                grid-template-rows: initial;
+            }
+            .textbox {
+                grid-column: 1/7;
+            }
+            &__img {
+                grid-column: 7/13;
+                position: absolute;
+                bottom: -110px;
+                img {
+                    max-height: initial;
+                }
+            }
+            // ---------------------TABLET REPONSIVE SECTION EXPLORE-----------------------
+            @include sm {
+                padding-top: 40px;
+                padding-bottom: 0px;
+                margin: 0;
+
+                .container {
+                    display: flex;
+                    flex-direction: column;
+                }
+                .textbox {
+                    // width: 100%;
+                    margin: 0 auto;
+                    max-width: 500px;
+
+                    text-align: center;
+                    // .heading {
+                    //     max-width: 305px;
+                    //     margin: 0 auto;
+                    // }
+                    // .desc {
+                    //     max-width: 330px;
+                    //     margin: 0 auto;
+                    // }
+                    .btn {
+                        width: 100%;
+                        display: flex;
+                        justify-content: center;
+                    }
+                }
+                &__img {
+                    position: initial;
+                    display: flex;
+                    justify-content: center;
+                }
+            }
+            // ---------------------MOBILE REPONSIVE SECTION EXPLORE-----------------------
+            @include xs {
+                .textbox {
+                    max-width: initial;
+                    text-align: center;
+                    .heading {
+                        max-width: 305px;
+                        margin: 0 auto;
+                    }
+                    .desc {
+                        max-width: 330px;
+                        margin: 0 auto;
+                    }
+                    .btn {
+                        width: 100%;
+                        display: flex;
+                        justify-content: center;
+                    }
+                }
+            }
+        }
+
+        // ---------------------SECTION USERSAY-----------------------
+        .scusersay {
+            --pb: 213px;
+            padding-bottom: var(--pb);
+
+            z-index: 1;
+            position: relative;
+            .container {
+                z-index: initial;
+            }
+            &__blur {
+                position: absolute;
+                left: 0;
+                z-index: -1;
+                img {
+                    opacity: 0.7;
+                }
+            }
+            &__slider {
+                // z-index: 3;
+                margin-top: 33px;
+                &-item {
+                    z-index: 10;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+                    width: calc((var(--max-width-container) / 2) - ((var(--gap) * 3) / 2));
+                    margin-right: calc(var(--gap) / 2);
+                    margin-left: calc(var(--gap) / 2);
+                    background-color: var(--medium-blue-cl);
+                    border-radius: var(--boder-radius);
+                    opacity: 0.3;
+                    transition: opacity 0.3s;
+                    padding: 65px 50px;
+                    &.is-selected {
+                        opacity: 1;
+                        transition: opacity 0.3s;
+                    }
+                    .textbox {
+                        .desc {
+                            max-width: initial;
+                        }
+                    }
+                }
+                .flickity-page-dots {
+                    bottom: -58px !important;
+                    li {
+                        // display: flex;
+                        width: 14px;
+                        height: 14px;
+                        border-radius: 50%;
+
+                        background: #ffffff66;
+
+                        cursor: pointer;
+                        &.is-selected {
+                            background-color: var(--white-cl);
+                        }
+                    }
+                }
+            }
+            @include md {
+                &__slider {
+                    &-item {
+                        // width: calc(var(--max-width-container) - (var(--gap) / 2));
+                        width: calc((var(--max-width-container) / 2) - ((var(--gap) * 3) / 2));
+                        //   .textbox{
+
+                        //     .desc{
+                        //         max-width: 243px;
+                        //     }
+                        //   }
+                    }
+                }
+            }
+            // ---------------------MOBILE REPONSIVE SECTION USERSAY-----------------------
+            @include xs {
+                --pb: 166px;
+                // padding-top: 120px;
+                &__blur {
+                    img {
+                        max-width: initial;
+                    }
+                }
+                &__slider {
+                    &-item {
+                        width: calc(var(--max-width-container) - ((var(--gap) * 3) / 2));
+                        .desc {
+                            max-width: 243px;
+                        }
+                    }
+                }
+            }
+        }
+
+        // --------------------- SECTION  VIDEO- ----------------------
+        .scvideo {
+            position: relative;
+            z-index: 2;
+            .scvideo__blur {
+                img {
+                    position: absolute;
+                    top: -50%;
+                    left: 0px;
+                    z-index: 1;
+                }
+            }
+            .container {
+                display: grid;
+                grid-template-columns: repeat(12, 1fr);
+                gap: var(--gap);
+                // align-items: center;
+            }
+            .textbox {
+                grid-column: 1/6;
+            }
+            &__thumb {
+                grid-column: 6/13;
+                margin-left: auto;
+                aspect-ratio: 662/400;
+                position: relative;
+                border-radius: var(--boder-radius);
+                overflow: hidden;
+                @include transition(var(--duration));
+
+                .img {
+                    @include midimg;
+                    position: absolute;
+                    @include mid(false);
+                    @include transition(var(--duration));
+                    &:hover {
+                        transform: translate(-50%, -50%) scale(120%, 120%);
+                        @include transition(var(--duration));
+                        cursor: pointer;
+                    }
+                    opacity: 0.5;
+                }
+
+                &-icons {
+                    width: 100px;
+                    height: 100px;
+                    border-radius: 100%;
+                    background-color: rgba(255, 255, 255, 0.2);
+                    @include mid(true);
+                    cursor: pointer;
+                    z-index: 2;
+                    @include mid(false);
+                    @include transition(var(--duration));
+                    &:hover {
+                        border: 1px solid var(--blue-cl);
+                        @include transition(var(--duration));
+                        svg {
+                            path {
+                                fill: var(--blue-cl);
+                                @include transition(var(--duration));
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        // ---------------------MOBILE REPONSIVE SECTION VIDEO -----------------------
+        @include md {
+            .scvideo {
+                .container {
+                    display: grid;
+                    grid-template-columns: repeat(12, 1fr);
+                    gap: var(--gap);
+                    // align-items: center;
+                }
+                .textbox {
+                    grid-column: 1/6;
+                }
+                &__thumb {
+                    grid-column: 6/13;
+                    aspect-ratio: 580/400;
+                    // aspect-ratio: initial;
+                }
+            }
+        }
+        @include sm {
+            .scvideo {
+                // .container {
+                //     display: grid;
+                //     grid-template-columns: repeat(12, 1fr);
+                //     gap: var(--gap);
+                //     // align-items: center;
+                // }
+                // .textbox {
+                //     grid-column: 1/7;
+                // }
+                &__thumb {
+                    aspect-ratio: 358/400;
+                    // aspect-ratio: initial;
+                }
+            }
+        }
+        // ---------------------TABLET REPONSIVE SECTION VIDEO-----------------------
+        @include xs {
+            .scvideo {
+                .container {
+                    display: flex;
+                    flex-direction: column;
+                    gap: initial;
+                }
+                &__thumb {
+                    width: 100%;
+                    aspect-ratio: 358/400;
+                    // margin: 0 auto;
+                }
+                .textbox {
+                    margin-bottom: 40px;
+                }
+            }
+        }
+        // --------------------- SECTION  NEWS- ----------------------
+        .scnews {
+            padding-top: 40px;
+            &__wrap {
+                display: grid;
+                grid-template-columns: 1fr 1fr 1fr;
+                gap: var(--gap);
+                margin-top: 48px;
+                .card {
+                    .card__content {
+                        .tab {
+                            position: absolute;
+                            left: 23px;
+                            top: 0;
+                            transform: translateY(-50%);
+                            z-index: 3;
+                        }
+                    }
+                }
+            }
+            .btn {
+                margin: 40px auto 0 auto;
+                @include mid(true);
+            }
+            // ---------------------MOBILE REPONSIVE SECTION SCNEWS-----------------------
+            @include sm {
+                .textbox {
+                    display: flex;
+                    flex-direction: column;
+                }
+                &__wrap {
+                    margin-top: 24px;
+                    display: flex;
+                    flex-direction: column;
+                }
+                .btn {
+                    width: 100%;
+                }
+            }
+            @include xs {
+                padding-top: 0px;
+                .btn {
+                    margin-top: 16px;
+                }
+            }
+        }
+
+        .scdowloadapp {
+            &__wrap {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 70px;
+                margin-top: 40px;
+                &-item {
+                    // width: 563px;
+                    // aspect-ratio: 563/775;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+                    padding: 48px 48px 0 48px;
+                    position: relative;
+                    background-color: var(--medium-blue-cl);
+                    border-radius: var(--boder-radius);
+                    overflow: hidden;
+                    .textbox {
+                        // padding: 48px;
+                        // .heading{
+                        //     height: 110px;
+                        // }
+                        max-height: 350px;
+                        .desc {
+                            max-height: 104px;
+                        }
+                        // max-width: initial;
+                        margin-bottom: 40px;
+                        .btn {
+                            margin-top: 32px;
+                        }
+                    }
+                    .img {
+                        img {
+                            // position: absolute;
+                            // bottom: 0;
+                            // left: 50%;
+                            // transform: translateX(-50%);
+                            // width: 100%;
+                            // height: 100%;
+                            margin: 0 auto;
+                        }
+                    }
+                }
+            }
+            // ---------------------MOBILE REPONSIVE DOWLOAND APP TABLET-----------------------
+            @include sm {
+                .textbox {
+                    display: flex;
+                    flex-direction: column;
+                }
+                &__wrap {
+                    display: flex;
+                    flex-direction: column;
+                    &-item {
+                        .textbox {
+                            .desc {
+                                max-height: 123px;
+                                overflow: hidden;
+                            }
+                        }
+                    }
+                }
+            }
+            // ---------------------MOBILE REPONSIVE DOWLOAND APP-----------------------
+            @include xs {
+                &__wrap {
+                    display: flex;
+                    flex-direction: column;
+
+                    align-items: center;
+                    &-item {
+                        padding: 32px 32px 0 32px;
+                        // width: 100%;
+                        // aspect-ratio: 358/580;
+                        .textbox {
+                            // padding: 32px 32px 0 32px;
+                            .heading {
+                                max-width: initial;
+                            }
+                            .btn {
+                                margin-top: 24px;
+                                margin-bottom: 40px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

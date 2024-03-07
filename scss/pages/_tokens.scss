@@ -1,0 +1,128 @@
+.tokenspage {
+    .tokens__main {
+        &.--disable-scroll {
+            height: 100vh;
+            overflow: hidden;
+        }
+        .progressbar {
+            position: fixed;
+            z-index: 300;
+            width: 0%;
+            height: 4px;
+            background-color: var(--blue-cl);
+
+            @include transition(var(--duration));
+        }
+        .tokens {
+            --pt-section: 192px;
+            padding-top: var(--pt-section);
+
+            .textbox {
+                max-width: 568px;
+                margin-bottom: 101px;
+
+                .heading {
+                    margin-bottom: 16px;
+                }
+            }
+            .table__mobile {
+                display: none;
+            }
+            .table {
+                &__header {
+                    display: flex;
+                    width: 100%;
+                    height: 99px;
+                    border-bottom: 1px solid var(--gray-cl);
+                    .col {
+                        display: flex;
+                        align-items: center;
+                        &:nth-child(1),
+                        &:nth-child(2) {
+                            width: 25%;
+                        }
+                        &:nth-child(3),
+                        &:nth-child(4) {
+                            width: 20%;
+                        }
+                        &:nth-child(5) {
+                            width: 10%;
+                        }
+                    }
+                }
+                &__body {
+                    &-row {
+                        display: flex;
+                        width: 100%;
+                        border-bottom: 1px solid var(--gray-cl);
+                        height: 133px;
+                        display: flex;
+                        align-items: center;
+                        .col {
+                            &:nth-child(1) {
+                                width: 25%;
+                                display: flex;
+                                align-items: center;
+
+                                .desc {
+                                    margin: 0 16px;
+                                }
+                            }
+                            &:nth-child(2) {
+                                width: 25%;
+                            }
+                            &:nth-child(3),
+                            &:nth-child(4) {
+                                width: 20%;
+                            }
+                            &:nth-child(5) {
+                                width: 10%;
+                                text-decoration: underline;
+                            }
+                        }
+                    }
+                }
+            }
+            @include xs {
+                --pt-padding: 121px;
+                padding-top: var(--pt-padding);
+                .textbox {
+                    text-align: start;
+                    margin-bottom: 48px;
+                }
+                .table {
+                    display: none;
+                }
+                .table__mobile {
+                    display: block;
+                    &-row {
+                        display: flex;
+                        flex-direction: column;
+                        width: 100%;
+                        height: 100%;
+                        .col {
+                            width: 100%;
+                            height: 150px;
+                            display: flex;
+                            flex-direction: column;
+                            justify-content: center;
+                            border-bottom: 1px solid var(--gray-cl);
+                            h2 {
+                                margin-bottom: 16px;
+                            }
+                            &:nth-child(1) {
+                                .col__content {
+                                    display: flex;
+                                    align-items: center;
+                                    .desc {
+                                        margin: 0 16px;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,132 @@
+.pricingpage {
+     &.--disable-scroll {
+        height: 100vh;
+        overflow: hidden;
+    }
+    .progressbar {
+        position: fixed;
+        z-index: 300;
+        width: 0%;
+        height: 4px;
+        background-color: var(--blue-cl);
+
+        @include transition(var(--duration));
+    }
+    .pricing__main {
+        .pricing {
+            padding-top: 130px;
+            padding-bottom: 225px;
+            &__icon {
+                display: flex;
+                justify-content: space-between;
+                &-item {
+                    display: flex;
+                    align-items: center;
+                    img {
+                        margin-right: 24px;
+                    }
+                }
+            }
+            &__card {
+                margin-top: 56px;
+                display: grid;
+                grid-template-columns: 1fr 1fr 1fr;
+                gap: var(--gap);
+                &-item {
+                    background-color: var(--medium-blue-cl);
+                    border-radius: var(--boder-radius);
+                    padding: 48px 30px 42px 32px;
+                    .texbox {
+                        margin-bottom: 40px;
+                        .heading {
+                            margin: 16px 0;
+                        }
+                    }
+                    .content {
+                        ul {
+                            margin-bottom: 54px;
+                            li {
+                                position: relative;
+                                padding-left: 20px;
+                                &::before {
+                                    content: "";
+                                    position: absolute;
+                                    left: 0;
+
+                                    top: 50%;
+                                    transform: translateY(-50%);
+                                    margin: auto 0;
+                                    display: inline-flex;
+                                    width: 6px;
+                                    height: 6px;
+                                    border-radius: 100%;
+                                    background-color: var(--blue-cl);
+                                }
+                            }
+                        }
+                        .btn {
+                            width: 100%;
+                            display: flex;
+                            justify-content: center;
+                        }
+                    }
+                }
+            }
+        }
+        @include sm {
+            .pricing {
+                .textbox {
+                    text-align: start;
+                    margin: initial;
+                    margin-bottom: 40px;
+                    .desc {
+                        margin: initial;
+                    }
+                }
+                &__icon {
+                    display: grid;
+                    grid-template-columns: 1fr 1fr;
+                    grid-template-rows: 1fr 1fr;
+                    gap: var(--gap);
+                }
+                &__card{
+                                        margin-top: 56px;
+                    display: grid;
+                    grid-template-columns: initial;
+                    grid-template-rows: auto;
+                    gap: var(--gap);
+                }
+                
+            }
+        }
+
+        @include xs {
+            .pricing {
+                padding-top: 130px;
+                padding-bottom: 80px;
+                .textbox {
+                    text-align: start;
+                    margin: initial;
+                    margin-bottom: 40px;
+                    .desc {
+                        margin: initial;
+                    }
+                }
+                &__icon {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: initial;
+                    gap: 38px;
+                    &-item {
+                        display: flex;
+                        align-items: center;
+                        img {
+                            margin-right: 24px;
+                        }
+                    }
+                }
+ 
+            }
+        }
+    }
+}

@@ -1,0 +1,132 @@
+.header {
+    height: var(--height-header);
+    width: 100%;
+    // @include fullscreen(true);
+    position: fixed;
+    z-index: 100;
+    @include transition(var(--duration));
+    .container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 100%;
+    }
+    &.--change__background {
+        background: linear-gradient(180deg, var(--dark-blue-cl) 0%, var(--blue-cl) 100%);
+        @include transition(var(--duration));
+    }
+    &__menu {
+        height: 100%;
+        @include mid(true);
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        left: 210px;
+        color: var(--white-cl);
+        &-item {
+            a {
+                color: var(--white-cl);
+                font-size: var(--fs-text-menu);
+                line-height: var(--lh-text-menu);
+                font-family: var(--font-body-medium);
+                letter-spacing: var(--ls-text-menu);
+                padding: 0 var(--padding-menu);
+                text-transform: uppercase;
+                position: relative;
+                &::after {
+                    content: "";
+                    display: block;
+                    position: absolute;
+                    bottom: -2px;
+                    left: var(--padding-menu);
+                    background-color: var(--white-cl);
+                    width: calc(100% - (var(--padding-menu) * 2));
+                    height: 2px;
+                    @include transform(scaleX(0));
+                    @include transform-origin(right);
+                    @include transition(transform var(--duration));
+                }
+                &.--active,
+                &:hover {
+                    &::after {
+                        @include transform(scaleX(1));
+                        @include transform-origin(left);
+                        @include transition(transform var(--duration));
+                    }
+                }
+            }
+        }
+        &::before {
+            content: "";
+            width: 1px;
+            height: 66px;
+            display: inline-block;
+            background-color: var(--medium-blue-cl);
+            margin-right: 14px;
+        }
+    }
+}
+@include sm {
+    .header {
+        &__right {
+            &-btnmenu {
+                cursor: pointer;
+                height: 45px;
+                width: 45px;
+                border-radius: 100%;
+                display: flex;
+                justify-content: center;
+                flex-direction: column;
+                align-items: center;
+                // justify-content: center;
+                position: relative;
+                background-color: var(--blue-cl);
+                &::before,
+                &::after,
+                span {
+                    position: absolute;
+                    width: 25px;
+                    height: 2px;
+                    background-color: var(--white-cl);
+                    transition: var(--duration);
+                }
+                &::before {
+                    position: absolute;
+                    top: 12px;
+                    content: "";
+                }
+                &::after {
+                    position: absolute;
+                    bottom: 12px;
+                    content: "";
+                }
+
+                &.--close {
+                    &::before {
+                        top: 12;
+                        content: "";
+                        transform: rotate(45deg) translate(7px, 7px);
+                        transition: var(--duration);
+                    }
+                    span {
+                        opacity: 0;
+                        visibility: hidden;
+                        transition: var(--duration);
+                    }
+                    &::after {
+                        bottom: 12;
+                        content: "";
+                        transform: rotate(-45deg) translate(7px, -7px);
+                        transition: var(--duration);
+                    }
+                }
+            }
+            &-button {
+                display: none;
+            }
+        }
+        &__menu {
+            display: none;
+        }
+    }
+}
